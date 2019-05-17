@@ -40,4 +40,13 @@ extension UIView {
             heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
     }
+
+    func centerInSuperview(centerX: NSLayoutXAxisAnchor, centerY: NSLayoutYAxisAnchor){
+        translatesAutoresizingMaskIntoConstraints = false
+
+        centerXAnchor.constraint(equalTo: centerX).isActive = true
+        centerYAnchor.constraint(equalTo: centerY).isActive = true
+
+    }
+
 }

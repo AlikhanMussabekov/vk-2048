@@ -7,30 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CBA409BE64CA6929FE321D0 /* TileAppearanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA42617DD43105388A281B /* TileAppearanceService.swift */; };
 		2CBA416B40EC6527348B17D9 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA49EF25B468A89D86FA78 /* UIColor.swift */; };
+		2CBA41934A0023A30079A287 /* GameLogicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA4ADFEE6F3A3546A23A7D /* GameLogicService.swift */; };
 		2CBA41A7ED4DC3978D0896FD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA471C05955E278B3EED74 /* UIView.swift */; };
 		2CBA41EF9B281A3B8D190D55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBA4A55662CE439C487449A /* Main.storyboard */; };
 		2CBA43E85F5FD36A9B9CBC30 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA42952A15C2BE48B9D6AC /* ViewControllerExtension.swift */; };
+		2CBA44C3C718B5556269E382 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA48AE9F5DE5A535C12B02 /* Game.swift */; };
 		2CBA4649F91C2F10FE6C683A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CBA4F7CF76F785047449957 /* Assets.xcassets */; };
+		2CBA464D446B5DF9384D1491 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2CBA41D8DF87694087597C15 /* .gitignore */; };
 		2CBA4694DCD082DC10DC1911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBA4A6CA849EF66CAAD9951 /* LaunchScreen.storyboard */; };
 		2CBA46B549E5637BF7DF33C0 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA4D65F56FD5B2237DC6B6 /* Tile.swift */; };
+		2CBA46F69ADBF30C1531717D /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA485A603ACB2C6098887A /* Position.swift */; };
+		2CBA475882F7360E4D648411 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA4D72907C825EDEC48ED5 /* Board.swift */; };
 		2CBA4961D7DB1D449EACA9AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA4B8312DCFB1572F046FC /* AppDelegate.swift */; };
 		2CBA4B67137B4F9867DDB703 /* AppearanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA4E61FD78A07A32446D75 /* AppearanceService.swift */; };
 		2CBA4D368B8138F2BC5D22D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA49681FEE03774501F540 /* ViewController.swift */; };
+		2CBA4EE02782CCCB5CBE88C9 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA4E923F99484450817414 /* TileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2CBA4053DCC70E1FACD40C21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CBA41AEB765251625DD95F7 /* vk-2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vk-2048.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CBA41D8DF87694087597C15 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
+		2CBA42617DD43105388A281B /* TileAppearanceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileAppearanceService.swift; sourceTree = "<group>"; };
 		2CBA42952A15C2BE48B9D6AC /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		2CBA43EBE6EF8B6D2627CDFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		2CBA471C05955E278B3EED74 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2CBA485A603ACB2C6098887A /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		2CBA48AE9F5DE5A535C12B02 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		2CBA49681FEE03774501F540 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2CBA49EF25B468A89D86FA78 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		2CBA4ADFEE6F3A3546A23A7D /* GameLogicService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicService.swift; sourceTree = "<group>"; };
 		2CBA4AE8947F873CC3AAEB0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CBA4B8312DCFB1572F046FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBA4D65F56FD5B2237DC6B6 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		2CBA4D72907C825EDEC48ED5 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		2CBA4E61FD78A07A32446D75 /* AppearanceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceService.swift; sourceTree = "<group>"; };
+		2CBA4E923F99484450817414 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		2CBA4F7CF76F785047449957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				2CBA4E61FD78A07A32446D75 /* AppearanceService.swift */,
+				2CBA4ADFEE6F3A3546A23A7D /* GameLogicService.swift */,
+				2CBA42617DD43105388A281B /* TileAppearanceService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -75,6 +91,8 @@
 				2CBA40428E8563AE8723E2C3 /* Extensions */,
 				2CBA4579BCB89C9E8470D885 /* Models */,
 				2CBA4216EAA28D56C4921833 /* Service */,
+				2CBA458416876734F23CFAA8 /* Views */,
+				2CBA48AE9F5DE5A535C12B02 /* Game.swift */,
 			);
 			path = "vk-2048";
 			sourceTree = "<group>";
@@ -84,6 +102,7 @@
 			children = (
 				2CBA488D3A39AE55B79F6A09 /* Products */,
 				2CBA43293AA1DB7B34EBF63E /* vk-2048 */,
+				2CBA41D8DF87694087597C15 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,8 +110,18 @@
 			isa = PBXGroup;
 			children = (
 				2CBA4D65F56FD5B2237DC6B6 /* Tile.swift */,
+				2CBA485A603ACB2C6098887A /* Position.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2CBA458416876734F23CFAA8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2CBA4E923F99484450817414 /* TileView.swift */,
+				2CBA4D72907C825EDEC48ED5 /* Board.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2CBA488D3A39AE55B79F6A09 /* Products */ = {
@@ -129,14 +158,19 @@
 		2CBA4DB2D9CBF0ACA25797F0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = "";
 				ORGANIZATIONNAME = Chainless;
+				TargetAttributes = {
+					2CBA4506F316FA133E75A192 = {
+						DevelopmentTeam = 9Q2V7YEV73;
+					};
+				};
 			};
 			buildConfigurationList = 2CBA42D451293BCBA9007A0F /* Build configuration list for PBXProject "vk-2048" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -158,6 +192,7 @@
 				2CBA4649F91C2F10FE6C683A /* Assets.xcassets in Resources */,
 				2CBA4694DCD082DC10DC1911 /* LaunchScreen.storyboard in Resources */,
 				2CBA41EF9B281A3B8D190D55 /* Main.storyboard in Resources */,
+				2CBA464D446B5DF9384D1491 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +210,12 @@
 				2CBA46B549E5637BF7DF33C0 /* Tile.swift in Sources */,
 				2CBA4B67137B4F9867DDB703 /* AppearanceService.swift in Sources */,
 				2CBA43E85F5FD36A9B9CBC30 /* ViewControllerExtension.swift in Sources */,
+				2CBA44C3C718B5556269E382 /* Game.swift in Sources */,
+				2CBA4EE02782CCCB5CBE88C9 /* TileView.swift in Sources */,
+				2CBA475882F7360E4D648411 /* Board.swift in Sources */,
+				2CBA46F69ADBF30C1531717D /* Position.swift in Sources */,
+				2CBA41934A0023A30079A287 /* GameLogicService.swift in Sources */,
+				2CBA409BE64CA6929FE321D0 /* TileAppearanceService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +245,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "vk-2048/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.chainless.vk-2048";
@@ -271,6 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "vk-2048/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.chainless.vk-2048";

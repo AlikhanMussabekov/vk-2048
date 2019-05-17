@@ -6,12 +6,13 @@
 import Foundation
 import UIKit
 
-protocol AppearanceServiceProtocol{
-    static func colorOfNumber(number: Int) -> UIColor
+protocol AppearanceProtocol{
+    static func tileColorOfNumber(number: Int?) -> UIColor
+    static func textColorOfNumber(number: Int?) -> UIColor
 }
 
-class AppearanceService: AppearanceServiceProtocol{
-    static func colorOfNumber(number: Int) -> UIColor {
+class AppearanceService: AppearanceProtocol{
+    static func tileColorOfNumber(number: Int?) -> UIColor {
         switch(number){
         case 2:
             return UIColor.TILE_2
@@ -37,6 +38,17 @@ class AppearanceService: AppearanceServiceProtocol{
             return UIColor.TILE_2048
         default :
             return UIColor.TILE_EMPTY
+        }
+    }
+
+    static func textColorOfNumber(number: Int?) -> UIColor{
+
+        guard let number = number else {return UIColor.TILE_EMPTY}
+
+        if (number > 32){
+            return .black
+        }else{
+            return .white
         }
     }
 }

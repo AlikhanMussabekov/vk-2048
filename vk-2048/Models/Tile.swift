@@ -6,11 +6,31 @@
 import Foundation
 import UIKit
 
-struct Tile{
-    var number: Int{
+class Tile{
+    var number: Int? {
         didSet {
-            color = AppearanceService.colorOfNumber(number: number)
+            tileColor = AppearanceService.tileColorOfNumber(number: number)
+            textColor = AppearanceService.textColorOfNumber(number: number)
         }
     }
-    var color = UIColor.TILE_EMPTY
+
+    var tileColor = UIColor.TILE_EMPTY
+    var textColor = UIColor.black
+    let position: Position
+    let frame: CGRect
+
+    weak var up: Tile?
+    weak var down: Tile?
+    weak var left: Tile?
+    weak var right: Tile?
+
+    init(position: Position, frame: CGRect, number: Int? = nil) {
+        self.position = position
+        self.number = number
+        self.frame = frame
+
+        tileColor = AppearanceService.tileColorOfNumber(number: number)
+        textColor = AppearanceService.textColorOfNumber(number: number)
+    }
+
 }
