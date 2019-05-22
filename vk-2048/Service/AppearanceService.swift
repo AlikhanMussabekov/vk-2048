@@ -46,9 +46,9 @@ class AppearanceService: AppearanceProtocol{
         guard let number = number else {return UIColor.TILE_EMPTY}
 
         if (number > 32){
-            return .black
-        }else{
             return .white
+        }else{
+            return .black
         }
     }
 }

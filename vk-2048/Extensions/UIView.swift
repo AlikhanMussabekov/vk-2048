@@ -7,6 +7,18 @@ import Foundation
 import UIKit
 
 extension UIView {
+
+    func fillSuperView(){
+        translatesAutoresizingMaskIntoConstraints = false
+
+        guard let superview = superview else {return}
+
+        topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+        leadingAnchor.constraint(equalTo: superview.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: superview.trailingAnchor).isActive = true
+    }
+
     func anchor(top: NSLayoutYAxisAnchor?,
                 leading: NSLayoutXAxisAnchor?,
                 bottom: NSLayoutYAxisAnchor?,

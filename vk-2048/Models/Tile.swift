@@ -16,19 +16,22 @@ class Tile{
 
     var tileColor = UIColor.TILE_EMPTY
     var textColor = UIColor.black
-    let position: Position
-    let frame: CGRect
+
+    var position: CGPoint
 
     weak var up: Tile?
     weak var down: Tile?
     weak var left: Tile?
     weak var right: Tile?
 
-    init(position: Position, frame: CGRect, number: Int? = nil) {
+    init(position: CGPoint, number: Int? = nil) {
         self.position = position
         self.number = number
-        self.frame = frame
 
+        setupColors()
+    }
+
+    private func setupColors(){
         tileColor = AppearanceService.tileColorOfNumber(number: number)
         textColor = AppearanceService.textColorOfNumber(number: number)
     }

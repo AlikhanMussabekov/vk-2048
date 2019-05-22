@@ -8,9 +8,10 @@ import UIKit
 
 class Board: UIView {
 
-    let dimension: Int = 4
+    let dimension: Int = GameConfig.DIMENSION
+    let padding: CGFloat = GameConfig.PADDING
+
     let tileSize: CGSize
-    var padding: CGFloat = 8
     var tileRects = [CGRect]()
 
     init(boardSize: CGSize) {
@@ -28,18 +29,21 @@ class Board: UIView {
             point.x = self.padding
 
             for y in 0..<dimension {
-                let tileModel = Tile(position: Position(x, y), frame: CGRect(origin: point, size: tileSize))
-                let tileView = TileView(tileModel: tileModel)
 
-                self.addSubview(tileView)
-
-                tileRects.append(tileView.frame)
+                let tileModel = Tile(position: CGPoint(x: x, y: y))
+                let backgroundTile = TileView(tileModel: tileModel, frame: CGRect(origin: point, size: tileSize))
+                self.addSubview(backgroundTile)
+                tileRects.append(backgroundTile.frame)
 
                 point.x += padding + tileSize.width
             }
             point.y += padding + tileSize.width
         }
 
+    }
+
+    func positionRect(position: CGPoint) -> CGRect {
+        return tileRects[Int(position.x) * dimension + Int(position.y)]
     }
 
     required init(coder aDecoder: NSCoder) {

@@ -8,7 +8,7 @@ import UIKit
 
 extension ViewController {
 
-    /*func setupGestures(){
+    func setupGestures(){
         let left = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
         left.direction = .left
         let right = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
@@ -25,19 +25,19 @@ extension ViewController {
     }
 
     @objc func swipedLeft() {
-        manager.shift(to: .left)
+        gameLogicService.move(direction: .left)
     }
 
     @objc func swipedRight() {
-        manager.shift(to: .right)
+        gameLogicService.move(direction: .right)
     }
 
     @objc func swipedUp() {
-        manager.shift(to: .up)
+        gameLogicService.move(direction: .up)
     }
 
     @objc func swipedDown() {
-        manager.shift(to: .down)
-    }*/
+        gameLogicService.move(direction: .down)
+    }
 
 }

@@ -8,35 +8,49 @@ import UIKit
 
 class TileView: UIView {
 
-    var numberLabel: UILabel
-    var tileModel: Tile {
+    let numberLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+
+    var tileModel: Tile? {
         didSet {
-            backgroundColor = tileModel.tileColor
-            numberLabel.textColor = tileModel.textColor
-            numberLabel.text = "\(tileModel.number)"
+            setColors()
         }
     }
 
-    init(tileModel: Tile){
-        self.numberLabel = UILabel(frame: CGRect(origin: .zero, size: tileModel.frame.size))
+    init(tileModel: Tile? = nil, frame: CGRect) {
         self.tileModel = tileModel
-        super.init(frame: tileModel.frame)
+        super.init(frame: frame)
 
-        backgroundColor = tileModel.tileColor
-        numberLabel.textColor = tileModel.textColor
-        numberLabel.text = "\(tileModel.number)"
-
-        self.numberLabel.textAlignment = .center
-        self.numberLabel.numberOfLines = 1
-        self.numberLabel.font = UIFont(name: "Helvetica-Bold", size: self.frame.height * 2 / 3)
-        self.numberLabel.minimumScaleFactor = 1 / self.numberLabel.font.pointSize
-        self.numberLabel.adjustsFontSizeToFitWidth = true
-        self.addSubview(numberLabel)
         self.layer.cornerRadius = 6
 
+        setNumberLabel()
+        setColors()
     }
 
-    required init(coder: NSCoder){
-        fatalError("NSCoding not supported")
+    private func setNumberLabel () {
+        numberLabel.font = .boldSystemFont(ofSize: self.frame.height / 2)
+        numberLabel.minimumScaleFactor = 1 / self.numberLabel.font.pointSize
+
+        self.addSubview(numberLabel)
+        numberLabel.fillSuperView()
+    }
+
+    private func setColors() {
+
+        self.backgroundColor = tileModel?.tileColor
+        self.numberLabel.textColor = tileModel?.textColor
+        self.numberLabel.isHidden = false
+
+        guard let number = tileModel?.number else {return}
+        self.numberLabel.text = "\(number)"
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("coder isn't allowed")
     }
 }
