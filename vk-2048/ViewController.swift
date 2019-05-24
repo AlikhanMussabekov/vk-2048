@@ -18,40 +18,16 @@ class ViewController: UIViewController {
     var board: Board!
     var gameLogicService: GameLogicService!
     var tileAppearanceService: TileAppearanceService!
-
-
-    // restart button config
-    let restartButton : UIButton = {
-        let button = UIButton()
-
-        let normalTitleAttributedString = NSAttributedString(
-                string: "Попробовать ещё раз", 
-                attributes: [
-                    .font: UIFont.systemFont(ofSize: 13),
-                    .foregroundColor: UIColor.black
-                ])
-
-        button.setAttributedTitle(normalTitleAttributedString, for: .normal)
-        button.backgroundColor = .white
-
-        button.layer.shadowColor = UIColor.BUTTON_SHADOW.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 1)
-        button.layer.shadowOpacity = 0.5
-        button.layer.shadowRadius = 2.0
-        button.layer.masksToBounds = false
-        button.layer.cornerRadius = 8.0
-        button.contentEdgeInsets = UIEdgeInsets(top: 10,left: 15,bottom: 10,right: 15)
-
-        button.addTarget(self, action: #selector(restartGameButtonTapped), for: .touchUpInside)
-
-        return button
-    }()
+    
+    var victoryView: UIVisualEffectView!
+    
+    let restartButton: RestartButton = RestartButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .MAIN_VIEW_BACKGROUND_COLOR
-
+        
         setupViews()
         setupGestures()
         setupGame()
@@ -71,9 +47,8 @@ class ViewController: UIViewController {
     }
 
     private func setupViews(){
-
         self.clearSubviews()
-
+        
         let sideLength = self.view.frame.width - padding * 2
         let boardSize = CGSize(width: sideLength, height: sideLength)
         board = Board(boardSize: boardSize)
@@ -83,22 +58,32 @@ class ViewController: UIViewController {
         board.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, size: .init(width: board.frame.width, height: board.frame.height))
         board.centerInSuperview(centerX: view.centerXAnchor, centerY: view.centerYAnchor)
 
+        restartButton.alpha = 0
         restartButton.anchor(
                 top: nil,
                 leading: nil,
                 bottom: view.bottomAnchor,
                 trailing: nil,
-                padding: .init(top: 0, left: 0, bottom: -24, right: 0))
-        restartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+                padding: .init(top: 0, left: 0, bottom: -40, right: 0))
+        restartButton.centerInSuperview(centerX: view.centerXAnchor, centerY: nil)
+        restartButton.addTarget(self, action: #selector(restartGameButtonTapped), for: .touchUpInside)
     }
 
     @objc private func restartGameButtonTapped(){
-        let alert = UIAlertController(title: "Начать новую игру?", message: "Текущие результаты будут утеряны", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { _ in
-            self.restart()
-        }))
-        alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        
+        restart()
+        
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseIn,
+            animations: {
+                self.restartButton.alpha = 0
+            }
+        )
+        
     }
 
     private func clearSubviews() {
@@ -106,27 +91,115 @@ class ViewController: UIViewController {
     }
 
     private func restart(){
-        self.tileAppearanceService.reset()
-        self.gameLogicService.removeTiles()
-        self.gameLogicService.start()
+        tileAppearanceService.reset()
+        gameLogicService.removeTiles()
+        gameLogicService.start()
     }
 }
 
 
 extension ViewController: GameLogicServiceDelegate {
     func showVictory() {
-        let alert = UIAlertController(title: "Победа", message: "победа", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Начать заново", style: .default, handler: { _ in
-            self.restart()
-        }))
-        self.present(alert, animated: true, completion: nil)
+
+        removeGestures()
+    
+        let blurEffect = UIBlurEffect(style: .dark)
+        victoryView = UIVisualEffectView(effect: blurEffect)
+        
+        let victoryImageView = UIImageView(image: UIImage(named: "victory"))
+        let victoryRestartButton = RestartButton()
+        let victoryLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Поздравляю!\nВы собрали \(maxVal)"
+            label.font = .boldSystemFont(ofSize: 28)
+            label.textColor = .white
+            label.numberOfLines = 0
+            label.textAlignment = .center
+            return label
+        }()
+        
+        view.addSubview(victoryView)
+        victoryView.fillSuperView()
+        
+        victoryView.contentView.addSubview(victoryImageView)
+        victoryView.contentView.addSubview(victoryLabel)
+        victoryView.contentView.addSubview(victoryRestartButton)
+        
+        victoryImageView.centerInSuperview(
+            centerX: victoryView.centerXAnchor,
+            centerY: victoryView.centerYAnchor,
+            size: .init(width: 200, height: 200)
+        )
+        
+        victoryLabel.anchor(
+            top: nil,
+            leading: nil,
+            bottom: victoryImageView.topAnchor,
+            trailing: nil,
+            padding: .init(top: 0, left: 8, bottom: -40, right: 8)
+        )
+        
+        victoryLabel.centerInSuperview(
+            centerX: victoryView.centerXAnchor,
+            centerY: nil
+        )
+        
+        
+        victoryRestartButton.anchor(
+            top: nil,
+            leading: nil,
+            bottom: victoryView.bottomAnchor,
+            trailing: nil,
+            padding: .init(top: 0, left: 0, bottom: -40, right: 0)
+        )
+        victoryRestartButton.centerInSuperview(centerX: victoryView.centerXAnchor, centerY: nil)
+        victoryRestartButton.addTarget(self, action: #selector(victoryRestartButtonTapped), for: .touchUpInside)
+        
+        victoryView.alpha = 0
+        
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseIn,
+            animations: {
+                self.victoryView.alpha = 1
+            })
+        
     }
 
+    @objc func victoryRestartButtonTapped(){
+        setupGestures()
+        restart()
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseIn,
+            animations: {
+                self.victoryView.alpha = 0
+            },
+            completion: {
+                finished in
+                if (finished){
+                    self.victoryView.removeFromSuperview()
+                }
+            }
+        )
+    }
+    
     func showDefeat() {
-        let alert = UIAlertController(title: "Проигрыш", message: "проигрыш", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Начать заново", style: .default, handler: { _ in
-            self.restart()
-        }))
-        self.present(alert, animated: true, completion: nil)
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.restartButton.alpha = 1.0
+            }
+        )
     }
 }

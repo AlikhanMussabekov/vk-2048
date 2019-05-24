@@ -25,6 +25,7 @@
 		2CBA4B67137B4F9867DDB703 /* AppearanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA4E61FD78A07A32446D75 /* AppearanceService.swift */; };
 		2CBA4D368B8138F2BC5D22D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA49681FEE03774501F540 /* ViewController.swift */; };
 		2CBA4EE02782CCCB5CBE88C9 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA4E923F99484450817414 /* TileView.swift */; };
+		77E1D76F2298711200EE3243 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1D76E2298711200EE3243 /* RestartButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		2CBA4E61FD78A07A32446D75 /* AppearanceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceService.swift; sourceTree = "<group>"; };
 		2CBA4E923F99484450817414 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		2CBA4F7CF76F785047449957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		77E1D76E2298711200EE3243 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				2CBA4E923F99484450817414 /* TileView.swift */,
 				2CBA4D72907C825EDEC48ED5 /* Board.swift */,
+				77E1D76E2298711200EE3243 /* RestartButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CBA4961D7DB1D449EACA9AC /* AppDelegate.swift in Sources */,
+				77E1D76F2298711200EE3243 /* RestartButton.swift in Sources */,
 				2CBA4D368B8138F2BC5D22D0 /* ViewController.swift in Sources */,
 				2CBA41A7ED4DC3978D0896FD /* UIView.swift in Sources */,
 				2CBA416B40EC6527348B17D9 /* UIColor.swift in Sources */,

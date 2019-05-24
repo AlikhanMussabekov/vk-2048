@@ -53,11 +53,6 @@ class GameLogicService{
         refreshNeighborTiles()
     }
 
-    func restartNewGame() {
-        resetGame()
-        startNewGame()
-    }
-
     func start() {
         guard tiles.filter({
             tile in

@@ -53,11 +53,28 @@ extension UIView {
         }
     }
 
-    func centerInSuperview(centerX: NSLayoutXAxisAnchor, centerY: NSLayoutYAxisAnchor){
+    func centerInSuperview(
+        centerX: NSLayoutXAxisAnchor?,
+        centerY: NSLayoutYAxisAnchor?,
+        size: CGSize = .zero) {
+        
         translatesAutoresizingMaskIntoConstraints = false
 
-        centerXAnchor.constraint(equalTo: centerX).isActive = true
-        centerYAnchor.constraint(equalTo: centerY).isActive = true
+        if let centerX = centerX{
+            centerXAnchor.constraint(equalTo: centerX).isActive = true
+        }
+        
+        if let centerY = centerY{
+            centerYAnchor.constraint(equalTo: centerY).isActive = true
+        }
+        
+        if size.width != 0 {
+            widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        }
+        
+        if size.height != 0 {
+            heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        }
 
     }
 

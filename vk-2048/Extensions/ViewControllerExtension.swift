@@ -8,6 +8,10 @@ import UIKit
 
 extension ViewController {
 
+    func removeGestures() {
+        self.view.gestureRecognizers?.removeAll()
+    }
+    
     func setupGestures(){
         let left = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
         left.direction = .left
