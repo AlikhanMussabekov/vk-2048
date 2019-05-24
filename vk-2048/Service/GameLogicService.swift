@@ -22,8 +22,8 @@ class GameLogicService{
     weak var gameLogicDelegate: GameLogicServiceDelegate?
     weak var tileAppearanceDelegate: TileAppearanceServiceDelegate?
 
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var isMoving = false
-
     private var dimension: Int = GameConfig.DIMENSION
     private var winTileValue: Int = GameConfig.MAX_VALUE
     private var nextMoves = [Move]()
@@ -33,7 +33,10 @@ class GameLogicService{
         }
     }
 
-    init() {}
+    init() {
+        tiles = appDelegate.getTiles()
+        refreshNeighborTiles()
+    }
 
     private func getNewTileValue() -> Int {
         let rndTileValue = Int.random(in: 0...9)
@@ -41,7 +44,7 @@ class GameLogicService{
     }
 
     private func resetGame() {
-        tiles.removeAll(keepingCapacity: true)
+        tiles.removeAll()
         for x in 0..<dimension {
             for y in 0..<dimension {
                 tiles.append(Tile(position: CGPoint(x: x, y: y) ))
@@ -50,33 +53,34 @@ class GameLogicService{
         refreshNeighborTiles()
     }
 
-    func restart() {
+    func restartNewGame() {
         resetGame()
-        start()
+        startNewGame()
     }
 
-    func start(with tiles: [Tile]) {
+    func start() {
         guard tiles.filter({
             tile in
             tile.number != nil
         }).count != 0 else {
-            start()
+            startNewGame()
             return
         }
-        self.tiles = tiles
-
+        
         for tile in tiles.filter({
             filterTile in
             filterTile.number != nil
         }) {
             tileAppearanceDelegate?.addTile(tile: tile)
+            appDelegate.setTiles(tiles: tiles)
         }
     }
 
-    func start() {
+    func startNewGame() {
         resetGame()
         tileAppearanceDelegate?.addTile(tile: createRandomTile())
         tileAppearanceDelegate?.addTile(tile: createRandomTile())
+        appDelegate.setTiles(tiles: tiles)
     }
 
     private func createRandomTile() -> Tile? {
@@ -145,6 +149,8 @@ class GameLogicService{
             let right = CGPoint(x: Int(tile.position.x + 1), y: Int(tile.position.y))
             tile.right = tiles.filter({ $0.position == right }).first
         }
+        
+        appDelegate.setTiles(tiles: tiles)
     }
 
 
@@ -243,6 +249,7 @@ class GameLogicService{
         from.number = nil
         tileAppearanceDelegate?.moveOnSameTile(from: from, to: to, completion: {
             self.isMoving = false
+            self.appDelegate.setTiles(tiles: self.tiles)
         })
     }
 
@@ -251,6 +258,13 @@ class GameLogicService{
         from.number = nil
         tileAppearanceDelegate?.moveOnEmptyTile(from: from, to: to, completion: {
             self.isMoving = false
+            self.appDelegate.setTiles(tiles: self.tiles)
         })
     }
+    
+    func removeTiles() {
+        tiles.removeAll()
+        appDelegate.setTiles(tiles: tiles)
+    }
+    
 }

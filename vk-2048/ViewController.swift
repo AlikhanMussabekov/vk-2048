@@ -19,8 +19,6 @@ class ViewController: UIViewController {
     var gameLogicService: GameLogicService!
     var tileAppearanceService: TileAppearanceService!
 
-    //TODO persistence tiles
-    var tiles = [Tile]()
 
     // restart button config
     let restartButton : UIButton = {
@@ -61,7 +59,7 @@ class ViewController: UIViewController {
     }
 
     private func startGame(){
-        gameLogicService.start(with: tiles)
+        gameLogicService.start()
     }
 
     private func setupGame(){
@@ -88,7 +86,7 @@ class ViewController: UIViewController {
         restartButton.anchor(
                 top: nil,
                 leading: nil,
-                bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                bottom: view.bottomAnchor,
                 trailing: nil,
                 padding: .init(top: 0, left: 0, bottom: -24, right: 0))
         restartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -109,6 +107,7 @@ class ViewController: UIViewController {
 
     private func restart(){
         self.tileAppearanceService.reset()
+        self.gameLogicService.removeTiles()
         self.gameLogicService.start()
     }
 }
