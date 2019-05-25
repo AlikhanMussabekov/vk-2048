@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     @objc private func restartGameButtonTapped(){
         
         restart()
-        
+        setupGestures()
         UIView.animate(
             withDuration: 1,
             delay: 0,
@@ -191,6 +191,7 @@ extension ViewController: GameLogicServiceDelegate {
     }
     
     func showDefeat() {
+        removeGestures()
         UIView.animate(
             withDuration: 1,
             delay: 0,

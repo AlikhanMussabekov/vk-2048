@@ -22,10 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
+        persistenceService.insertTiles(tiles: tiles)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         persistenceService.insertTiles(tiles: tiles)
+        persistenceService.closeDB()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

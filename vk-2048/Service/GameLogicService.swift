@@ -44,6 +44,8 @@ class GameLogicService{
     }
 
     private func resetGame() {
+        
+        nextMoves.removeAll()
         tiles.removeAll()
         for x in 0..<dimension {
             for y in 0..<dimension {
@@ -66,8 +68,17 @@ class GameLogicService{
             filterTile in
             filterTile.number != nil
         }) {
+            
+            if checkVictory(number: tile.number!) {
+                return
+            }
+            
             tileAppearanceDelegate?.addTile(tile: tile)
             appDelegate.setTiles(tiles: tiles)
+        }
+        
+        if checkDefeat() {
+            return
         }
     }
 
@@ -108,6 +119,7 @@ class GameLogicService{
         }
 
         if defeat {
+            UserDefaults.standard.set(true, forKey: "defeat")
             gameLogicDelegate?.showDefeat()
             return defeat
         }
@@ -115,6 +127,7 @@ class GameLogicService{
 
     private func checkVictory(number: Int) -> Bool {
         if number == winTileValue{
+            UserDefaults.standard.set(true, forKey: "victory")
             gameLogicDelegate?.showVictory()
             return true
         } else {
